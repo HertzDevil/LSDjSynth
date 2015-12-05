@@ -6,7 +6,7 @@
 #include <cstring>
 #include <cstdlib>
 #include <string> // C++ stoi
-#include "LSDjSynth.h"
+#include "LSDjSynth.hpp"
 
 using namespace std;
 
