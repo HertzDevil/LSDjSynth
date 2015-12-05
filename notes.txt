@@ -1,0 +1,51 @@
+LSDjSynth
+HertzDevil
+Version 1.0 - Dec 6 2015
+
+--------------------------------------------------------------------------------
+
+LSDjSynth is a recreation of the wave instrument synthesizer from LittleSoundDj.
+It allows composers to create wavetable instruments quickly by using parameters
+from LSDj's synth screen.
+Currently, it supports exporting to the following formats:
+ - raw binary waveform
+ - FamiTracker N163 instrument
+ - XPMCK MML macro for Game Boy
+In all cases, it also prints all generated waveforms to the standard output as
+hexadecimal strings.
+
+The following abbreviated options are allowed:
+  -saw  --sawtooth    -sq   --square      -tri  --triangle    -lp   --lowp
+  -hp   --highp       -bp   --bandp       -all  --allp        -q    --q
+  -w    --wrap        -r    --resync      -r2   --resyn2      -o    --once
+  -l    --loop        -p    --pingpong    -m    --manual      -len  --length
+  -rep  --repeat      -spd  --speed       -e    --end         -b    --bin
+  -f    --fti         -x    --xpmck       -n    --fname       -?    --help
+  -v    --version
+Arguments must still be separated from the option name by whitespace.
+
+Numeric arguments allow the "0" prefix for octal numbers, or the "0x" prefix for
+hexadecimal numbers.
+
+All instrument and synth parameters assume the following default values if the
+corresponding options are not specified:
+                      WAVE      SAW       START:              END:
+  PLAY     ONCE       FILTER   LOWP       VOLUME     10       VOLUME     10
+  LENGTH      F       Q           0       CUTOFF     FF       CUTOFF     FF
+  REPEAT      0       DIST     CLIP       PHASE      00       PHASE      00
+  SPEED       4       PHASE  NORMAL       VSHIFT     00       VSHIFT     00
+These are precisely the default values from LSDj. If multiple options of the
+same type are given (e.g. "--highp --allp" or "-m -p"), then only the last one
+will be applied.
+
+The exported formats will contain all 16 waves if --end is given (except for
+XPMCK, which only outputs the used waveforms), and only 1 wave otherwise. XPMCK
+macro output does not generate the volume macro for halting the instrument when
+PLAY is set to ONCE.
+
+LSDjSynth is licensed under the MIT License. The full source code is available
+at https://github.com/HertzDevil/LSDjSynth.
+
+--------------------------------------------------------------------------------
+
+For enquiries mail to nicetas.c@gmail.com
